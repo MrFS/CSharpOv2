@@ -9,7 +9,7 @@ namespace CSharpOv2
     public class Brok
     {
 
-        private double _teller, _nevner;
+        private int _teller, _nevner;
 
         public Brok()
         {
@@ -35,13 +35,13 @@ namespace CSharpOv2
             Nevner = forrigeBrok.Nevner;
         }
 
-        public double Teller
+        public int Teller
         {
             get { return _teller; }
             set { _teller = value; }
         }
 
-        public double Nevner
+        public int Nevner
         {
             get { return _nevner; }
             set
@@ -57,10 +57,14 @@ namespace CSharpOv2
 
         public double Verdi()
         {
-            return Teller / Nevner;
+            return Teller / (double)Nevner;
         }
 
-        public string Forkort(int a, int b)
+        public string FinnForkortet()
+        {
+            return Forkort(Teller, Nevner);
+        }
+        private string Forkort(int a, int b)
         {
             int bcf = BCF(a, b);
             
@@ -70,7 +74,12 @@ namespace CSharpOv2
             return "Forkortet versjon: " + a + "/" + b;
         }
 
-        public int BCF(int a, int b)
+        public int FinnBCF()
+        {
+            return BCF(Teller, Nevner);
+        }
+
+        private int BCF(int a, int b)
         {
             return b == 0 ? a : BCF(b, a % b);
         }

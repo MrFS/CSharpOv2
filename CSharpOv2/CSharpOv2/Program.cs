@@ -13,9 +13,9 @@ namespace CSharpOv2
 
             Brok brok1 = new Brok(12, 8);
 
-            Console.WriteLine(brok1.Verdi());
-            Console.WriteLine(brok1.BCF(26,44));
-            Console.WriteLine(brok1.Forkort(12, 8));
+            Console.WriteLine("Sum: " + brok1.Verdi());
+            Console.WriteLine("Største Felles Faktor: " + brok1.FinnBCF());
+            Console.WriteLine(brok1.FinnForkortet());
             Console.ReadKey();
 
         }
