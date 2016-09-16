@@ -46,13 +46,28 @@ namespace CSharpOv2
             get { return _nevner; }
             set
             {
-                if (value < 0)
+                if (value == 0)
                 {
                     throw new ArgumentException("Verdi kan ikke være null");
                 }
 
                 _nevner = value;
             }
+        }
+
+        public Brok Gange(Brok gangemed)
+        {
+            int teller, nevner, bcf;
+
+            teller = Teller * gangemed.Teller;
+            nevner = Nevner * gangemed.Nevner;
+
+            bcf = BCF(teller, nevner);
+
+            teller /= bcf;
+            nevner /= bcf;
+
+            return new Brok(teller, nevner);
         }
 
         public double Verdi()
@@ -71,7 +86,7 @@ namespace CSharpOv2
             a /= bcf;
             b /= bcf;
 
-            return "Forkortet versjon: " + a + "/" + b;
+            return a + "/" + b;
         }
 
         public int FinnBCF()
@@ -82,6 +97,11 @@ namespace CSharpOv2
         private int BCF(int a, int b)
         {
             return b == 0 ? a : BCF(b, a % b);
+        }
+
+        public override string ToString()
+        {
+            return Teller + "/" + Nevner + " = " + Verdi();
         }
     }
 }
